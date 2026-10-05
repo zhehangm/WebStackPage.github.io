@@ -1,320 +1,482 @@
+<html>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>保时捷718 - 跑车传奇</title>
+<title>Han Zhe |  Personal Website</title>
 
 <style>
+
+:root{
+    --miami-blue:#00BFFF;
+    --miami-light:#6FD8FF;
+    --white:#ffffff;
+    --dark:#1b2a38;
+}
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:"Microsoft YaHei",sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-    background:#111;
-    color:white;
+    font-family:"Microsoft YaHei",sans-serif;
+    background:#fff;
+    color:var(--dark);
+    overflow-x:hidden;
 }
 
-/*导航栏*/
-header{
-    height:70px;
-    background:#000;
+/* 导航栏 */
+
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:0 60px;
+    padding:20px 8%;
+    backdrop-filter:blur(12px);
+    background:rgba(255,255,255,.15);
+    z-index:999;
 }
 
 .logo{
-    font-size:30px;
-    font-weight:bold;
-    color:#e5b700;
+    font-size:32px;
+    font-weight:900;
+    color:white;
+    letter-spacing:2px;
 }
 
-nav a{
+nav ul{
+    display:flex;
+    list-style:none;
+}
+
+nav ul li{
+    margin-left:30px;
+}
+
+nav ul li a{
     color:white;
     text-decoration:none;
-    margin-left:30px;
-    font-size:16px;
+    font-weight:600;
+    transition:.3s;
 }
 
-nav a:hover{
-    color:#e5b700;
+nav ul li a:hover{
+    color:#dff7ff;
 }
 
+/* 首页 */
 
-/*首页*/
 .hero{
-    height:650px;
+    height:100vh;
     background:
-    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.8)),
-    url("https://images.unsplash.com/photo-1503376780353-7e6692767b70")
-    center/cover;
+    linear-gradient(-45deg,
+    #00BFFF,
+    #33CCFF,
+    #6FD8FF,
+    #A8ECFF);
+    background-size:400% 400%;
+    animation:bgMove 12s ease infinite;
 
     display:flex;
-    flex-direction:column;
+    align-items:center;
     justify-content:center;
-    padding-left:80px;
+    text-align:center;
+    color:white;
+    position:relative;
 }
 
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
 
 .hero h1{
-    font-size:70px;
-    letter-spacing:5px;
+    font-size:78px;
+    margin-bottom:20px;
 }
 
 .hero p{
-    font-size:25px;
-    margin:20px 0;
+    font-size:26px;
+    margin-bottom:30px;
 }
 
-
 .btn{
-    width:180px;
-    padding:15px;
-    background:#d50000;
-    color:white;
-    text-align:center;
+    display:inline-block;
+    padding:15px 40px;
+    background:white;
+    color:var(--miami-blue);
     text-decoration:none;
-    border-radius:5px;
+    border-radius:50px;
+    font-weight:bold;
     transition:.3s;
 }
 
 .btn:hover{
-    background:#ff3030;
+    transform:translateY(-5px);
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
 }
 
+/* 波浪 */
 
-/*车型介绍*/
-.section{
-    padding:60px 10%;
+.wave{
+    position:absolute;
+    bottom:0;
+    width:100%;
 }
 
-.section h2{
+.wave svg{
+    display:block;
+}
+
+/* 通用 */
+
+section{
+    padding:100px 10%;
+}
+
+.section-title{
     text-align:center;
-    font-size:40px;
-    margin-bottom:40px;
-    color:#e5b700;
+    margin-bottom:60px;
 }
 
+.section-title h2{
+    color:var(--miami-blue);
+    font-size:45px;
+}
 
-.info{
+/* 关于我 */
+
+.about{
     display:flex;
-    gap:40px;
+    flex-wrap:wrap;
+    gap:50px;
     align-items:center;
 }
 
-
-.info img{
-    width:50%;
-    border-radius:15px;
+.avatar{
+    width:280px;
+    height:280px;
+    border-radius:50%;
+    background:linear-gradient(
+    135deg,
+    var(--miami-blue),
+    var(--miami-light));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:90px;
+    font-weight:bold;
+    box-shadow:0 15px 40px rgba(0,191,255,.3);
 }
 
+.about-text{
+    flex:1;
+    min-width:300px;
+}
 
-.info p{
+.about-text p{
     font-size:18px;
     line-height:2;
 }
 
+/* 技能 */
 
-/*参数*/
-.cards{
-    display:flex;
-    justify-content:center;
+.skills{
+    background:#f5fcff;
+}
+
+.skill-grid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.skill-card{
+    background:white;
+    border-radius:25px;
+    padding:35px;
+    text-align:center;
+    transition:.4s;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.skill-card:hover{
+    transform:translateY(-10px);
+}
+
+.skill-card h3{
+    color:var(--miami-blue);
+    margin-bottom:10px;
+}
+
+/* 作品 */
+
+.project-grid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(300px,1fr));
     gap:30px;
 }
 
+.project{
+    border-radius:25px;
+    overflow:hidden;
+    background:white;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
 
-.card{
-    background:#222;
-    padding:30px;
-    width:250px;
+.project-img{
+    height:220px;
+    background:
+    linear-gradient(
+    135deg,
+    #00BFFF,
+    #6FD8FF);
+}
+
+.project-content{
+    padding:25px;
+}
+
+.project-content h3{
+    color:var(--miami-blue);
+    margin-bottom:10px;
+}
+
+/* 联系方式 */
+
+.contact{
+    background:
+    linear-gradient(
+    135deg,
+    #00BFFF,
+    #6FD8FF);
     text-align:center;
-    border-radius:15px;
-    transition:.4s;
+    color:white;
 }
 
-
-.card:hover{
-    transform:translateY(-10px);
-    background:#333;
+.contact h2{
+    font-size:42px;
+    margin-bottom:25px;
 }
 
-
-.card h3{
-    color:#e5b700;
-    font-size:28px;
+.contact p{
+    font-size:20px;
+    margin:10px 0;
 }
 
+/* 页脚 */
 
-.card p{
-    margin-top:15px;
-}
-
-
-
-/*图片展示*/
-.gallery{
-    display:flex;
-    gap:20px;
-    justify-content:center;
-}
-
-
-.gallery img{
-    width:30%;
-    border-radius:15px;
-    transition:.4s;
-}
-
-
-.gallery img:hover{
-    transform:scale(1.05);
-}
-
-
-
-/*底部*/
 footer{
-    background:#000;
+    background:white;
     text-align:center;
-    padding:30px;
-    color:#aaa;
+    padding:25px;
+    color:#777;
+}
+
+/* 响应式 */
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:50px;
+}
+
+.hero p{
+    font-size:20px;
+}
+
+nav ul{
+    display:none;
+}
+
 }
 
 </style>
-
 </head>
-
 
 <body>
 
-
-<header>
-
-<div class="logo">PORSCHE 718</div>
-
 <nav>
-<a href="#">首页</a>
-<a href="#">车型</a>
-<a href="#">性能</a>
-<a href="#">联系</a>
+    <div class="logo">HAN ZHE</div>
+
+    <ul>
+        <li><a href="#about">关于我</a></li>
+        <li><a href="#skills">技能</a></li>
+        <li><a href="#projects">作品</a></li>
+        <li><a href="#contact">联系方式</a></li>
+    </ul>
 </nav>
-
-</header>
-
-
 
 <section class="hero">
 
-<h1>PORSCHE 718</h1>
+    <div>
+        <h1>Han Zhe</h1>
 
-<p>纯粹驾驶乐趣 · 中置发动机跑车</p>
+        <p id="typing"></p>
 
-<a class="btn" href="#">立即体验</a>
+        <a href="#about" class="btn">
+            探索更多
+        </a>
+    </div>
 
-</section>
-
-
-
-
-<section class="section">
-
-<h2>保时捷718介绍</h2>
-
-
-<div class="info">
-
-<img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a">
-
-
-<p>
-保时捷718是一款专为驾驶激情打造的双座跑车。
-采用中置发动机布局，拥有精准操控和卓越性能。
-<br><br>
-
-718 Cayman与718 Boxster融合了赛车科技、
-轻量化设计以及保时捷经典造型，
-为驾驶者带来极致运动体验。
-</p>
-
-
-</div>
+    <div class="wave">
+        <svg viewBox="0 0 1440 220">
+            <path fill="#fff"
+            d="M0,128L80,144C160,160,320,192,
+            480,186.7C640,181,800,139,
+            960,122.7C1120,107,1280,117,
+            1360,122.7L1440,128L1440,320L0,
+            320Z"></path>
+        </svg>
+    </div>
 
 </section>
 
+<section id="about">
 
+    <div class="section-title">
+        <h2>关于我</h2>
+    </div>
 
+    <div class="about">
 
+        <div class="avatar">H</div>
 
-<section class="section">
+        <div class="about-text">
+            <p>
+                我是一名热爱技术与设计的开发者，
+                专注于 Web 开发、用户体验设计、
+                人工智能应用与创意项目实现。
+                喜欢把创意转化为真实而优雅的产品。
+            </p>
+        </div>
 
-<h2>核心性能</h2>
-
-
-<div class="cards">
-
-
-<div class="card">
-<h3>4.9秒</h3>
-<p>0-100km/h加速</p>
-</div>
-
-
-<div class="card">
-<h3>300+</h3>
-<p>最大马力</p>
-</div>
-
-
-<div class="card">
-<h3>275km/h</h3>
-<p>最高车速</p>
-</div>
-
-
-</div>
+    </div>
 
 </section>
 
+<section id="skills" class="skills">
 
+    <div class="section-title">
+        <h2>专业技能</h2>
+    </div>
 
+    <div class="skill-grid">
 
+        <div class="skill-card">
+            <h3>HTML5</h3>
+            <p>现代网页开发</p>
+        </div>
 
-<section class="section">
+        <div class="skill-card">
+            <h3>CSS3</h3>
+            <p>响应式设计</p>
+        </div>
 
-<h2>车型欣赏</h2>
+        <div class="skill-card">
+            <h3>JavaScript</h3>
+            <p>前端交互开发</p>
+        </div>
 
+        <div class="skill-card">
+            <h3>UI/UX</h3>
+            <p>界面体验设计</p>
+        </div>
 
-<div class="gallery">
-
-<img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70">
-
-<img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7">
-
-<img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d">
-
-</div>
-
+    </div>
 
 </section>
 
+<section id="projects">
 
+    <div class="section-title">
+        <h2>作品展示</h2>
+    </div>
 
+    <div class="project-grid">
 
+        <div class="project">
+            <div class="project-img"></div>
+            <div class="project-content">
+                <h3>企业官网</h3>
+                <p>现代化品牌展示网站</p>
+            </div>
+        </div>
+
+        <div class="project">
+            <div class="project-img"></div>
+            <div class="project-content">
+                <h3>管理系统</h3>
+                <p>专业业务管理平台</p>
+            </div>
+        </div>
+
+        <div class="project">
+            <div class="project-img"></div>
+            <div class="project-content">
+                <h3>个人博客</h3>
+                <p>内容创作与分享平台</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="contact" class="contact">
+
+    <h2>联系方式</h2>
+
+    <p>📧 zhehan@126.com</p>
+    <p>🌐 zhehan.cc.cd</p>
+ 
+
+</section>
 
 <footer>
-
-© 2026 Porsche 718 Car Website  
-<br>
-激情驾驶 · 永恒经典
-
+    © 2026 zhehan.cc.cd
 </footer>
 
+<script>
+
+const text =
+"Web Developer | Designer | Creator";
+
+let i = 0;
+
+function typing(){
+
+    if(i < text.length){
+
+        document.getElementById("typing")
+        .innerHTML += text.charAt(i);
+
+        i++;
+
+        setTimeout(typing,100);
+    }
+
+}
+
+typing();
+
+</script>
 
 </body>
 </html>
+
